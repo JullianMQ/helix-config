@@ -1,0 +1,90 @@
+#======================= WEB DEV=======================
+[language-server.tailwindcss-ls]
+command = "tailwindcss-language-server"
+config = { userLanguages = { rust = "html", "*.rs" = "html" } }
+args = ["--stdio"]
+
+[[language]]
+name = "html"
+language-servers = [ "vscode-html-language-server", "tailwindcss-ls" ]
+
+[[language]]
+name = "css"
+language-servers = [ "vscode-css-language-server", "tailwindcss-ls" ]
+
+[[language]]
+name = "jsx"
+language-servers = [ "typescript-language-server", "tailwindcss-ls", "vscode-eslint-language-server" ]
+
+[[language]]
+name = "tsx"
+language-servers = [ "typescript-language-server", "tailwindcss-ls", "vscode-eslint-language-server" ]
+
+[[language]]
+name = "svelte"
+language-servers = [ "svelteserver", "tailwindcss-ls" ] 
+
+# IF ESLINT DON'T WORK DOWNGRADE TO version 4.8
+# Omitting version will default to major `@latest`!
+# npm i -g vscode-langservers-extracted@4.8
+# `npm update -g` will install the latest non-major version,
+# only do that after the issue has been fixed!
+# Unfortunately, there's no proper way to pin/lock
+# global packs
+ 
+[[language]]
+name = "javascript"
+language-servers = [
+  "typescript-language-server", "vscode-eslint-language-server" ]
+
+[[language]]
+name = "typescript"
+language-servers = [ "typescript-language-server", "vscode-eslint-language-server" ]
+
+[[language]]
+name = "vue"
+auto-format = false
+formatter = { command = "prettier", args = ["--parser", "vue"] }
+language-servers = ["typescript-language-server"]
+
+[[language-server.typescript-language-server.config.plugins]]
+name = "@vue/typescript-plugin"
+location = "/usr/lib/node_modules/@vue/language-server/"
+languages = ["vue"]
+# =======================WEB DEV=======================
+
+
+# =======================RUST=======================
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer", "tailwindcss-ls"]
+# =======================RUST=======================
+ 
+
+# =======================PYTHON=======================
+[[language]]
+name = "python"
+language-servers = [ "pyright", "ruff" ]
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "strict"
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+# =======================PYTHON=======================
+
+
+# =======================GO LANGUAGE=======================
+[[language]]
+name = "go"
+auto-format = false
+formatter = { command = "goimports" }
+
+[language-server.gopls]
+command = "gopls"
+args = ["-logfile=/tmp/gopls.log", "serve"]
+
+[language-server.gopls.config]
+"ui.diagnostic.staticcheck" = true
+# =======================GO LANGUAGE=======================
