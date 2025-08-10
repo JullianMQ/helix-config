@@ -1,8 +1,22 @@
-theme = "varua"
+theme = "term16_dark"
+# ayu_evolve
+# penumbra+
+# tokyonight_moon
+# rasmus
+# mellow
+# dark_plus
+# term16_dark
 
 [editor]
 line-number = "relative"
 mouse = true
+end-of-line-diagnostics = "hint"
+auto-format = false
+continue-comments = false
+insert-final-newline = false
+# cursorline = true
+# cursorcolumn = true
+gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
 
 [editor.cursor-shape]
 select = "underline"
@@ -10,7 +24,7 @@ select = "underline"
 [editor.statusline]
 left = ["mode", "spinner"]
 center = ["file-name", "read-only-indicator"]
-right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+right = ["diagnostics", "position", "file-line-ending"]
 separator = "│"
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
@@ -21,14 +35,24 @@ workspace-diagnostics = ["warning", "error"]
 [editor.lsp]
 display-inlay-hints = true
 
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
 [editor.indent-guides]
 render = true
-character = "╎"
+character = "│"
 skip-levels = 1
 
 # KEYBINDS
 [keys.normal]
 esc = ["collapse_selection", "keep_primary_selection"]
+tab = "move_parent_node_end"
+S-tab = "move_parent_node_start"
+X = "extend_line_above"
+"C-h" = "jump_view_left"
+"C-l" = "jump_view_right"
+"C-j" = "jump_view_down"
+"C-k" = "jump_view_up"
  
 [keys.normal.space.s]
 o = ":config-reload"
@@ -37,6 +61,17 @@ o = ":config-reload"
 w = ":write"
 o = ["add_newline_below"]
 O = ["add_newline_above"]
+e = "file_explorer_in_current_buffer_directory"
+E = "file_explorer_in_current_directory"
+f = "file_picker_in_current_directory"
+F = "file_picker_in_current_buffer_directory"
 
 [keys.normal.space.space]
 w = ":write-quit"
+
+[keys.insert]
+S-tab = "move_parent_node_start"
+
+[keys.select]
+tab = "extend_parent_node_end"
+S-tab = "extend_parent_node_start"
